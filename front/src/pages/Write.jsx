@@ -1,4 +1,4 @@
-import axios from "axios";
+import { makeRequest } from "../axios";
 import moment from "moment";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
@@ -22,7 +22,7 @@ const Write = () => {
       formData.append("file", file);
 
       // Send a POST request to upload the file
-      const res = await axios.post("/upload", formData);
+      const res = await makeRequest.post("/upload", formData);
       return res.data;
 
       // Return the filename of the uploaded file

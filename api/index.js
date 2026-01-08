@@ -4,9 +4,14 @@ import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import cors from "cors";
 
 const app = express();
 
+app.use(cors({
+  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
