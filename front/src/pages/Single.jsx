@@ -38,7 +38,7 @@ const Single = () => {
     }
   };
 
-  const getText = (html) =>{
+  const getText = (html) => {
     const doc = new DOMParser().parseFromString(html, "text/html")
     return doc.body.textContent
   }
@@ -63,9 +63,9 @@ const Single = () => {
           )}
         </div>
         <h1>{post.title}</h1>
-        {getText(post.desc)}
+        {getText(post.description)}
       </div>
-      <Menu cat={post.cat}/>
+      <Menu cat={post.cat} />
     </div>
   );
 };

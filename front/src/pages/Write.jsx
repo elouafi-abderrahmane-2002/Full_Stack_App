@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Write = () => {
   const state = useLocation().state;
   const [value, setValue] = useState(state?.title || "");
-  const [title, setTitle] = useState(state?.desc || "");
+  const [title, setTitle] = useState(state?.description || "");
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || "");
 
@@ -39,19 +39,19 @@ const Write = () => {
     try {
       state
         ? await axios.put(`/posts/${state.id}`, {
-            title,
-            desc: value,
-            cat,
-            img: file ? imgUrl : "",
-          })
+          title,
+          description: value, // Changed from desc: value to description: value
+          cat,
+          img: file ? imgUrl : "",
+        })
         : await axios.post(`/posts/`, {
-            title,
-            desc: value,
-            cat,
-            img: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
-          navigate("/")
+          title,
+          description: value,
+          cat,
+          img: file ? imgUrl : "",
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        });
+      navigate("/")
     } catch (err) {
       console.log(err);
     }
